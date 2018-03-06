@@ -1,0 +1,9 @@
+client/dist/
+
+node_modules/
+
+about-photos-component/
+reservations-component/
+reviews-component/
+menu-component/
+
