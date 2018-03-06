@@ -8,6 +8,10 @@
   background: #f7f7f7;
 }
 
+.title {
+  font-size: 45px;
+}
+
 #summary {
   height: 950px;
 }
@@ -71,12 +75,23 @@
   left: 97px;
   bottom: 140px;
 }
+
+.header {
+  right: 50px;
+}
+
 .side {
   padding: 10px;
   position: relative;
   left: 12px;
   font-family: Arial;
   font-weight: bold;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  position: relative;
 }
 
 .sideInfoStyle {
@@ -164,7 +179,7 @@
 }
 
 .sidebar {
-  width: 15%;
+  width: 17%;
   bottom: 47em;
   left: 850px;
   position: relative;
