@@ -12,6 +12,10 @@
   height: 950px;
 }
 
+.restaurantName, .ratings, .review {
+  background-color: white;
+}
+
 .bannerImg {
   height: 150px;
   width: 150px;
