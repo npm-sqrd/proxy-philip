@@ -9,16 +9,7 @@
 }
 
 .title {
-  font-size: 40px;
-}
-
-.headers {
-  right: 50px;
-}
-
-.logo {
-  height: 100px;
-  width: 100px;
+  font-size: 45px;
 }
 
 #summary {
@@ -84,6 +75,11 @@
   left: 97px;
   bottom: 140px;
 }
+
+.header {
+  right: 50px;
+}
+
 .side {
   padding: 10px;
   position: relative;
@@ -92,18 +88,23 @@
   font-weight: bold;
 }
 
+.logo {
+  height: 100px;
+  width: 100px;
+  position: relative;
+}
+
 .sideInfoStyle {
   font-size: 13px;
   position: relative;
-  left: 15px;
+  left: 20px;
   bottom: 20px;
-  text-align: left;
 }
 
 .sideInfoPhone {
   font-size: 13px;
   position: relative;
-  left: 30px;
+  left: 20px;
   bottom: 22px;
   text-align: left;
 }
@@ -111,9 +112,8 @@
 .sideInfoHours {
   font-size: 13px;
   position: relative;
-  left: 20px;
+  left: 10px;
   bottom: 18px;
-  text-align: left;
 }
 
 .sideInfoPrice {
@@ -121,7 +121,6 @@
   position: relative;
   left: 30px;
   bottom: 5px;
-  text-align: left;
 }
 
 .phoneInfo {
@@ -143,21 +142,21 @@
   position: relative;
   height: 15px;
   width: 15px;
-  bottom: 45px;
+  bottom: 30px;
 }
 
 .moneyIcon {
   height: 20px;
   width: 20px;
   position: relative;
-  top: 27px;
+  top: 30px;
 }
 
 .phoneIcon {
   height: 15px;
   width: 15px;
   position: relative;
-  bottom: 28px;
+  bottom: 32px;
   right: 0px;
 }
 
@@ -165,7 +164,7 @@
   height: 15px;
   width: 15px;
   position: relative;
-  bottom: 28px;
+  bottom: 32px;
 }
 
 .restaurant {
