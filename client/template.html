@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Silverspoon! </title>
+</head>
+<link rel="stylesheet" type="text/css" href="about-styles.css">
+<link rel="stylesheet" type="text/css" href="reviews.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<body id="mainPage">
+  <div>
+      <span class="title"> Silverspoon! </span>
+    <span>
+      <img class="logo" src="https://avatars0.githubusercontent.com/u/36716959?s=200&v=4"></img>
+    </span>
+  </div>
+  <div id="summary"></div>
+  <div id="reservations"></div>
+  <div id="menu"></div>
+  <div id="reviews"></div>
+  <script src="https://fb.me/react-0.14.3.min.js"></script>
+  <script src="https://fb.me/react-dom-0.14.3.min.js"></script>
+  <script src="./dist/about-bundle.js"></script>
+  <script src="./dist/reservations-bundle.js"></script>
+  <script src="./dist/reviews-bundle.js"></script>
+  <script src="./dist/menu-bundle.js"></script>
+  <script>
+    ReactDOM.render(
+      React.createElement(SummaryView, {id: <%= id %>}, null), 
+      document.getElementById('summary'));
+    ReactDOM.render(
+      React.createElement(Reservation, {id: <%= id %>}, null),
+      document.getElementById('reservations'));
+    ReactDOM.render(
+      React.createElement(MenuView, {id: <%= id %>}, null),
+      document.getElementById('menu'));
+    ReactDOM.render(
+      React.createElement(App, {id: <%= id %>}, null),
+      document.getElementById('reviews'));
+  </script>
+</body>
+</html>
