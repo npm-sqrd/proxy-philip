@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="reviews.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <body id="mainPage">
-  <div class="headers">
+  <div>
       <span class="title"> Silverspoon! </span>
     <span>
       <img class="logo" src="https://avatars0.githubusercontent.com/u/36716959?s=200&v=4"></img>
@@ -25,16 +25,16 @@
   <script src="./dist/menu-bundle.js"></script>
   <script>
     ReactDOM.render(
-      React.createElement(SummaryView, {id:81509}, null), 
+      React.createElement(SummaryView, {id: <%= id %>}, null), 
       document.getElementById('summary'));
     ReactDOM.render(
-      React.createElement(Reservation, {id:81509}, null),
+      React.createElement(Reservation, {id: <%= id %>}, null),
       document.getElementById('reservations'));
     ReactDOM.render(
-      React.createElement(MenuView, {id:81509}, null),
+      React.createElement(MenuView, {id: <%= id %>}, null),
       document.getElementById('menu'));
     ReactDOM.render(
-      React.createElement(App, {id:81509}, null),
+      React.createElement(App, {id: <%= id %>}, null),
       document.getElementById('reviews'));
   </script>
 </body>

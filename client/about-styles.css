@@ -8,6 +8,19 @@
   background: #f7f7f7;
 }
 
+.title {
+  font-size: 40px;
+}
+
+.headers {
+  right: 50px;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+}
+
 #summary {
   height: 950px;
 }
