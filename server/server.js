@@ -3,7 +3,7 @@ const app = express();
 const fs = require('fs');
 const _ = require('underscore');
 
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 6008;
 
 app.use(express.static('../client'));
 
