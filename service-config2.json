@@ -1,0 +1,9 @@
+{
+  "Summary": 
+    {
+      "name": "summary",
+      "url": "http://localhost:8081",
+      "client": "about-bundle",
+      "server": "about-bundle-server"
+    }
+}

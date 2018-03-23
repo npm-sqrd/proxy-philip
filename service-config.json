@@ -1,0 +1,30 @@
+{
+  "Summary": 
+    {
+      "name": "summary",
+      "url": "http://localhost:8081",
+      "client": "about-bundle",
+      "server": "about-bundle-server"
+    },
+  "Reservation": 
+    {
+      "name": "reservation",
+      "url": "http://localhost:8082",
+      "client": "reservation-bundle",
+      "server": "reservation-bundle-server"
+    },
+  "Menu": 
+    {
+      "name": "menu",
+      "url": "http://localhost:8083",
+      "client": "menu-bundle",
+      "server": "menu-bundle-server"
+    },
+  "Review":
+    {
+      "name": "review",
+      "url": "http://localhost:8084",
+      "client": "review-bundle",
+      "server": "review-bundle-server"
+    }
+}
