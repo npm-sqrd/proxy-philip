@@ -1,30 +1,39 @@
-const Promise = require('bluebird');
 const fs = require('fs');
 const path = require('path');
-const request = require('request');
-
-const exist = Promise.promisify(fs.stat);
+const axios = require('axios');
+const serviceConfig = require('../service-config2.json');
 
 const fetchBundles = (components, type = 'client') => {
   Object.keys(components).forEach((item) => {
     if (type === 'client') {
       const url = `${components[item].url}/${components[item].client}.js`;
       const client = `${components[item].client}.js`;
-      exist(path.join(__dirname, `../dist/${type}/${client}`)).catch((err) => {
-        if (err.code === 'ENOENT') {
-          request(url).pipe(fs.createWriteStream(path.join(__dirname, `../dist/${type}/${client}`)));
-        }
+      const options = {
+        method: 'get',
+        url: url,
+        responseType: 'stream',
+      };
+      axios(options).then(response => {
+        response.data.pipe(fs.createWriteStream(path.join(__dirname, `../dist/${type}/${client}`)));
+      }).catch(err => {
+        console.error(err);
       });
     } else if (type === 'server') {
       const url = `${components[item].url}/${components[item].server}.js`;
       const server = `${components[item].server}.js`;
-      exist(path.join(__dirname, `../dist/${type}/${server}`)).catch((err) => {
-        if (err.code === 'ENOENT') {
-          request(url).pipe(fs.createWriteStream(path.join(__dirname, `../dist/${type}/${server}`)));
-        }
+      const options = {
+        method: 'get',
+        url: url,
+        responseType: 'stream',
+      };
+      axios(options).then(response => {
+        response.data.pipe(fs.createWriteStream(path.join(__dirname, `../dist/${type}/${server}`)));
+      }).catch(err => {
+        console.error(err);
       });
     }
   });
 };
 
-module.exports.fetchBundles = fetchBundles;
+fetchBundles(serviceConfig);
+fetchBundles(serviceConfig, 'server');

@@ -1,28 +1,25 @@
-const express = require('express');
-const morgan = require('morgan');
+const http = require('http');
+const fs = require('fs');
 const path = require('path');
 const React = require('react');
 const ReactDom = require('react-dom/server');
-
-const app = express();
-const port = process.env.PORT || 8080;
+const axios = require('axios');
 
 const serviceConfig = require('../service-config2.json');
 const Html = require('../template/html.js');
 const Script = require('../template/script.js');
-const { fetchBundles } = require('./helper.js');
-
-app.use(morgan('dev'));
-
-app.use(express.static(path.join(__dirname, '../dist/client')));
-
-fetchBundles(serviceConfig);
-fetchBundles(serviceConfig, 'server');
 
 const summary = require('../dist/server/about-bundle-server.js').default;
-// const menu = require('../dist/server/menu-bundle-server.js');
-// const reservation = require('../dist/server/reservation-bundle-server.js');
-// const review = require('../dist/server/review-bundle-server.js');
+// const menu = require('../dist/server/menu-bundle-server.js').default;
+// const reservation = require('../dist/server/reservation-bundle-server.js').default;
+// const review = require('../dist/server/review-bundle-server.js').default;
+
+const services = {
+  SummaryView: summary,
+  // Menu: menu,
+  // Reservation: reservation,
+  // Review: review,
+};
 
 const renderComponents = ((components, props = {}) => {
   return Object.keys(components).map(item => {
@@ -31,19 +28,27 @@ const renderComponents = ((components, props = {}) => {
   });
 });
 
-const services = {
-  Summary: summary,
-  // Menu: menu,
-  // Reservation: reservation,
-  // Review: review,
-};
+const port = process.env.PORT || 8080;
 
-app.get('/restaurants/:name', function(req, res){
-  const name = {name : 'Restaurant 15000000'};
-  let components = renderComponents(services, name);
-  res.end(Html(Script(serviceConfig, [components])));
-});
-
-app.listen(port, () => {
-  console.log('proxy is up and running');
-});
+http.createServer((req, res) => {
+  console.log('req.url', req.url);
+  if (req.url === '/') {
+    let components = renderComponents(services);
+    res.end(Html(Script(serviceConfig, components)));
+  } else if (req.url === '/about-bundle.js') {
+    const jsStream = fs.createReadStream(path.join(__dirname, '../dist/client/about-bundle.js'), 'utf8');
+    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+    jsStream.pipe(res);
+  } else if (req.url.match(/restaurants\/summary\/.+/)) {
+    axios({
+      method: 'get',
+      url: `http://localhost:8081${req.url}`,
+    }).then(response => {
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify(response.data));
+    }).catch(error => {
+      console.error(error);
+    });
+  }
+}).listen(port);
+console.log(`Server running at http://127.0.0.1:${port}`);
